@@ -6,7 +6,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -19,8 +18,15 @@ class GenderDetControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void getGenderTest() throws Exception {
-        this.mockMvc.perform(get("/genderdet/?name=Jan%20Kowalski&method=1"))
+    void firstTokenEndpointTest() throws Exception {
+        this.mockMvc.perform(get("/genderdet/first/Jan%20Kowalski"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    void multiTokenEndpointTest() throws Exception {
+        this.mockMvc.perform(get("/genderdet/multi/Jan%20Kowalski"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
