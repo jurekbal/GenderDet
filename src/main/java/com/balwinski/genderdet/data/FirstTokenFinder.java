@@ -11,8 +11,14 @@ import java.nio.file.Path;
 
 @Service
 public class FirstTokenFinder implements TokensFinder {
+
     @Override
     public TokenResults find(String name) {
+        if (name == null || name.isBlank()) {
+            return new TokenResults(0,0);
+            // TODO log invalid parameter for debug - should be filtered in upper layer
+        }
+
         int malesFound = 0;
         int femalesFound = 0;
 

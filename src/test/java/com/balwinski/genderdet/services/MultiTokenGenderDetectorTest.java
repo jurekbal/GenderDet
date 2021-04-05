@@ -2,9 +2,8 @@ package com.balwinski.genderdet.services;
 
 import org.junit.jupiter.api.Test;
 
-import static com.balwinski.genderdet.services.TestDataConstants.*;
+import static com.balwinski.genderdet.constants.TestDataConstants.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MultiTokenGenderDetectorTest {
 

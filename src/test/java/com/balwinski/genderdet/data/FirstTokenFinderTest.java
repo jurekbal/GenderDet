@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static com.balwinski.genderdet.constants.TestDataConstants.*;
 
 class FirstTokenFinderTest {
 
@@ -13,13 +14,49 @@ class FirstTokenFinderTest {
     void shouldProduceOneMaleFoundResult() {
         //given
         TokensFinder tf = new FirstTokenFinder();
-        //when
-        TokenResults results = tf.find("piotr nowak");
-        //then
-        assertThat(results).isNotNull();
-        assertThat(results.getMalesCount()).isEqualTo(1).as("Males count match/dismatch");
-        assertThat(results.getFemalesCount()).isEqualTo(0).as("Females count match/dismatch");
-
-        // TODO change to parametrized test and implement more test cases
+        //when, then
+        for (String fullName : MALE_NAMES_SAMPLE) {
+            //when
+            TokenResults results = tf.find(fullName);
+            //then
+            assertThat(results).isNotNull();
+            assertThat(results.getMalesCount()).as("Males count mismatch for name: " + fullName)
+                    .isEqualTo(1);
+            assertThat(results.getFemalesCount()).as("Females count mismatch for name: " + fullName)
+                    .isEqualTo(0);
+        }
     }
+
+    @Test
+    void shouldProduceOneFemaleFoundResult() {
+        //given
+        TokensFinder tf = new FirstTokenFinder();
+        for (String fullName : FEMALE_NAMES_SAMPLE) {
+            //when
+            TokenResults results = tf.find(fullName);
+            //then
+            assertThat(results).isNotNull();
+            assertThat(results.getMalesCount()).as("Males count mismatch for name: " + fullName)
+                    .isEqualTo(0);
+            assertThat(results.getFemalesCount()).as("Females count mismatch for name: " + fullName)
+                    .isEqualTo(1);
+        }
+    }
+
+    @Test
+    void shouldProduceInconclusiveResultZeroZero() {
+        //given
+        TokensFinder tf = new FirstTokenFinder();
+        for (String fullName : NOT_NAMES) {
+            //when
+            TokenResults results = tf.find(fullName);
+            //then
+            assertThat(results).isNotNull();
+            assertThat(results.getMalesCount()).as("Males count mismatch for name: " + fullName)
+                    .isEqualTo(0);
+            assertThat(results.getFemalesCount()).as("Females count mismatch for name: " + fullName)
+                    .isEqualTo(0);
+        }
+    }
+
 }

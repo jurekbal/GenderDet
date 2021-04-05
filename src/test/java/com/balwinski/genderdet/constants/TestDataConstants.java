@@ -1,4 +1,4 @@
-package com.balwinski.genderdet.services;
+package com.balwinski.genderdet.constants;
 
 public class TestDataConstants {
 
