@@ -1,5 +1,7 @@
 package com.balwinski.genderdet.services;
 
+import com.balwinski.genderdet.data.FirstTokenFinder;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.balwinski.genderdet.constants.TestDataConstants.*;
@@ -7,10 +9,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FirstTokenGenderDetectorTest {
 
+    private static GenderDetector gd;
+
+    @BeforeAll
+    static void setup(){
+        //given
+        gd = new FirstTokenGenderDetector();
+    }
+
     @Test
     void haveToReturnMALE() {
-        //given
-        GenderDetector gd = new FirstTokenGenderDetector();
+
         //when
         //then
         for (String name : MALE_NAMES_SAMPLE) {
@@ -20,23 +29,19 @@ class FirstTokenGenderDetectorTest {
 
     @Test
     void haveToReturnFEMALE() {
-        //given
-        GenderDetector dg = new FirstTokenGenderDetector();
         //when
         //then
         for (String name : FEMALE_NAMES_SAMPLE) {
-            assertThat(dg.detect(name)).isEqualTo("FEMALE");
+            assertThat(gd.detect(name)).isEqualTo("FEMALE");
         }
     }
 
     @Test
     void haveToReturnINCONCLUSIVE() {
-        //given
-        GenderDetector dg = new FirstTokenGenderDetector();
         //when
         //then
         for (String name : NOT_NAMES) {
-            assertThat(dg.detect(name)).isEqualTo("INCONCLUSIVE");
+            assertThat(gd.detect(name)).isEqualTo("INCONCLUSIVE");
         }
     }
 
