@@ -17,11 +17,11 @@ class MultiTokenGenderDetectorTest {
     }
 
     @Test
-    void haveToReturnFEALE() {
+    void haveToReturnFEMALE() {
         GenderDetector gd = new MultiTokenGenderDetector();
 
         for (String name : FEMALE_NAMES_SAMPLE) {
-            assertThat(gd.detect(name)).isEqualTo("MALE");
+            assertThat(gd.detect(name)).isEqualTo("FEMALE");
         }
     }
 
