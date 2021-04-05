@@ -3,12 +3,9 @@ package com.balwinski.genderdet.data;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static com.balwinski.genderdet.constants.TestDataConstants.*;
 
 class FirstTokenFinderTest {
-
-    //TODO Female, inconclusive cases
 
     @Test
     void shouldProduceOneMaleFoundResult() {
