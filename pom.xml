@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.balwinski</groupId>
     <artifactId>genderdet</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-RELEASE</version>
     <name>genderdet</name>
     <description>Simple gender detection application</description>
     <properties>

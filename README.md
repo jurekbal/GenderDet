@@ -35,6 +35,7 @@ MALE, FEMALE, INCONCLUSIVE
 ## How to build and use
 
 1. Run entrypoint class GenderdetApplication.main() from your favorite IDE
+OR
 2. Build using Maven: mvn clean install
 3. then run jar file (should be found in target directory): java -jar genderdet-<version>.jar  (where <version> is 
    current verion like 1.0-SNAPSHOT or 1.0-RELEASE)
@@ -44,7 +45,7 @@ MALE, FEMALE, INCONCLUSIVE
 
 ## Version History
 
-Development 1.0 (pre-release) genderdet-1.0-SNAPSHOT - version meets task requirements.
+RELEASE 1.0 genderdet-1.0-RELEASE.jar - version that meets main task requirements.
 
 ## Resources
 
@@ -59,4 +60,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ## Authors
 
-Jerzy Balwinski
+Jerzy Balwiński
