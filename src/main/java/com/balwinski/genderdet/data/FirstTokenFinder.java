@@ -4,10 +4,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 @Service
 public class FirstTokenFinder implements TokensFinder {
@@ -25,11 +24,11 @@ public class FirstTokenFinder implements TokensFinder {
         String[] nameParts = name.split(" ");
         String givenName = nameParts[0];
 
-        Path malesFilePath = FileSystems.getDefault().getPath("given_names_M_PL_reduced.txt");
-        Path femalesFilePath = FileSystems.getDefault().getPath("given_names_F_PL_reduced.txt");
+        InputStream maleTokensResource = getClass().getClassLoader().getResourceAsStream("given_names_M_PL_reduced.txt");
+        InputStream femaleTokensResource = getClass().getClassLoader().getResourceAsStream("given_names_F_PL_reduced.txt");
 
-        try (BufferedReader brMales = new BufferedReader(Files.newBufferedReader(malesFilePath, StandardCharsets.UTF_8));
-             BufferedReader brFemales = new BufferedReader(Files.newBufferedReader(femalesFilePath, StandardCharsets.UTF_8))) {
+        try (BufferedReader brMales = new BufferedReader(new InputStreamReader(maleTokensResource, StandardCharsets.UTF_8));
+             BufferedReader brFemales = new BufferedReader(new InputStreamReader(femaleTokensResource, StandardCharsets.UTF_8))){
 
             String token;
             while((token = brMales.readLine()) != null) {
